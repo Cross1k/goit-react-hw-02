@@ -1,0 +1,19 @@
+.table {
+  /* background-color: rgb(28, 27, 27); */
+  /* color: white; */
+  margin-top: 40px;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.head {
+  text-align: center;
+  background-color: rgb(46, 46, 46);
+  color: white;
+}
+
+.th {
+  text-align: center;
+  width: 224px;
+  border: 1px solid black;
+}
