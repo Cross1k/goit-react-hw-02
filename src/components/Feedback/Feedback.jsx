@@ -1,7 +1,5 @@
 import css from "./Feedback.module.css";
 
-import { useEffect } from "react";
-
 const Feedback = ({ feedbackOptions, totalFeedback }) => {
   const keys = Object.keys(feedbackOptions);
   if (totalFeedback() > 0) {
