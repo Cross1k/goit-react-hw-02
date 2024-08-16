@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Description from "../Description/Description";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
+import Notification from "./Notification/Notification";
 
 const App = () => {
   const feedbackInput = {
@@ -21,7 +22,7 @@ const App = () => {
       "feedback-values",
       JSON.stringify(feedbackOptions)
     );
-  });
+  }, [feedbackOptions]);
 
   const totalFeedback = () => {
     let sum = 0;
@@ -32,11 +33,13 @@ const App = () => {
   };
 
   const resetValues = () => {
+    let resetFeedbackOptions = {};
     setFeedbackOptions((feedbackOptions) => {
       for (let key in feedbackOptions) {
-        feedbackOptions[key] = 0;
+        resetFeedbackOptions[key] = 0;
       }
-      return { ...feedbackOptions };
+
+      return { ...resetFeedbackOptions };
     });
   };
 
@@ -47,6 +50,10 @@ const App = () => {
     }));
   };
 
+  const positiveFeedback = Math.round(
+    (feedbackOptions.good / totalFeedback()) * 100
+  );
+
   return (
     <>
       <Description />
@@ -56,11 +63,15 @@ const App = () => {
         resetValues={resetValues}
         totalFeedback={totalFeedback}
       />
-      <Feedback
-        feedbackOptions={feedbackOptions}
-        updateFeedback={updateFeedback}
-        totalFeedback={totalFeedback}
-      />
+      {totalFeedback() > 0 ? (
+        <Feedback
+          feedbackOptions={feedbackOptions}
+          positiveFeedback={positiveFeedback}
+          totalFeedback={totalFeedback}
+        />
+      ) : (
+        <Notification />
+      )}
     </>
   );
 };
