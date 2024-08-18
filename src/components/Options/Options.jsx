@@ -4,7 +4,7 @@ export default function Options({
   feedbackOptions,
   updateFeedback,
   resetValues,
-  totalFeedback,
+  total,
 }) {
   const keys = Object.keys(feedbackOptions);
   return (
@@ -20,7 +20,7 @@ export default function Options({
           </button>
         );
       })}
-      {totalFeedback() > 0 && (
+      {total > 0 && (
         <button className={css.button} onClick={resetValues}>
           Reset
         </button>

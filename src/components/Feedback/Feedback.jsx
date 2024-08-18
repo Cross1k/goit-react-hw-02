@@ -1,6 +1,6 @@
 import css from "./Feedback.module.css";
 
-const Feedback = ({ feedbackOptions, totalFeedback, positiveFeedback }) => {
+const Feedback = ({ feedbackOptions, total, positiveFeedback }) => {
   const keys = Object.keys(feedbackOptions);
 
   return (
@@ -12,7 +12,7 @@ const Feedback = ({ feedbackOptions, totalFeedback, positiveFeedback }) => {
           </p>
         );
       })}
-      <p className={css.text}> Total: {totalFeedback()}</p>
+      <p className={css.text}> Total: {total}</p>
       <p className={css.text}>
         Possitive:
         {positiveFeedback}%
